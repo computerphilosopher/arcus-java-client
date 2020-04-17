@@ -7,6 +7,7 @@ cache:
 
 before_install:
   - sudo apt-get install -qq build-essential autoconf automake libtool libcppunit-dev python-setuptools python-dev ant
+  - sudo pip install markupsafe
   - bash install-arcus-memcached.sh develop
 
 script:
@@ -14,6 +15,8 @@ script:
 
 notifications:
   email:
-    - junhyun.park@jam2in.com
-    - minkikim89@jam2in.com
-    - alsdn653@jam2in.com
+    if: fork = false OR type = pull_request
+    recipients:
+      - junhyun.park@jam2in.com
+      - minkikim89@jam2in.com
+      - alsdn653@jam2in.com
